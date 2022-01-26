@@ -11,6 +11,17 @@ namespace RestAPIForDictators.Controllers
     public class DictatorController : ControllerBase
     {
         private List<DictatorItem> _dictators = new List<DictatorItem>();
+        private string _dictatorFile = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\dictators.json";
+
+        public DictatorController()
+        {
+            try
+            {
+                _dictators = JsonSerializer.Deserialize<List<DictatorItem>>(System.IO.File.ReadAllText(_dictatorFile));
+            }
+            catch (Exception)
+            { }
+        }
 
         // GET: api/<DictatorController>
         [HttpGet]
@@ -41,6 +52,13 @@ namespace RestAPIForDictators.Controllers
             _dictator.Id = _dictators.Count;
             _dictators.Add(_dictator);
 
+            try
+            {
+                System.IO.File.WriteAllText(_dictatorFile, JsonSerializer.Serialize(_dictators));
+            }
+            catch (Exception)
+            { }
+
             return JsonSerializer.Serialize(_dictator);
         }
 
@@ -52,6 +70,13 @@ namespace RestAPIForDictators.Controllers
             {
                 _dictators[id] = dictator;
                 _dictators[id].Id = id;
+
+                try
+                {
+                    System.IO.File.WriteAllText(_dictatorFile, JsonSerializer.Serialize(_dictators));
+                }
+                catch (Exception)
+                { }
             }
             catch (Exception)
             {
@@ -68,6 +93,13 @@ namespace RestAPIForDictators.Controllers
             try
             {
                 _dictators.RemoveAt(id);
+
+                try
+                {
+                    System.IO.File.WriteAllText(_dictatorFile, JsonSerializer.Serialize(_dictators));
+                }
+                catch (Exception)
+                { }
             }
             catch (Exception)
             {
