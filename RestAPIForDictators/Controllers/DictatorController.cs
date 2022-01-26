@@ -56,7 +56,7 @@ namespace RestAPIForDictators.Controllers
             {
                 System.IO.File.WriteAllText(_dictatorFile, JsonSerializer.Serialize(_dictators));
             }
-            catch (Exception)
+            catch (Exception ex)
             { }
 
             return JsonSerializer.Serialize(_dictator);
