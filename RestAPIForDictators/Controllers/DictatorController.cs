@@ -108,5 +108,28 @@ namespace RestAPIForDictators.Controllers
 
             return $"Successfully removed dictator {id}";
         }
+
+        // DELETE api/<DictatorController>/5
+        [HttpDelete]
+        public string Clear()
+        {
+            try
+            {
+                _dictators.Clear();
+
+                try
+                {
+                    System.IO.File.WriteAllText(_dictatorFile, JsonSerializer.Serialize(_dictators));
+                }
+                catch (Exception)
+                { }
+            }
+            catch (Exception)
+            {
+                return "No dictators was found";
+            }
+
+            return $"Successfully removed all dictators";
+        }
     }
 }
