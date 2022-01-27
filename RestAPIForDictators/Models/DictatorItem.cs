@@ -2,11 +2,11 @@
 {
     public class DictatorItem
     {
-        public long? Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public int? BirthYear { get; set; }
-        public int? DeathYear { get; set; }
-        public string? Description { get; set; }
+        public long? id { get; set; }
+        public string? firstName { get; set; }
+        public string? lastName { get; set; }
+        public int? birthYear { get; set; }
+        public int? deathYear { get; set; }
+        public string? description { get; set; }
     }
 }

@@ -49,9 +49,8 @@ namespace RestAPIForDictators.Controllers
         [HttpPost]
         public string Post([FromBody] DictatorItem dictator)
         {
-            DictatorItem _dictator = dictator;
-            _dictator.Id = _dictators.Count;
-            _dictators.Add(_dictator);
+            dictator.id = _dictators.Count;
+            _dictators.Add(dictator);
 
             try
             {
@@ -60,7 +59,7 @@ namespace RestAPIForDictators.Controllers
             catch (Exception ex)
             { }
 
-            return JsonSerializer.Serialize(_dictator);
+            return JsonSerializer.Serialize(dictator);
         }
 
         // PATCH api/<DictatorController>/5
@@ -70,7 +69,7 @@ namespace RestAPIForDictators.Controllers
             try
             {
                 _dictators[id] = dictator;
-                _dictators[id].Id = id;
+                _dictators[id].id = id;
 
                 try
                 {
