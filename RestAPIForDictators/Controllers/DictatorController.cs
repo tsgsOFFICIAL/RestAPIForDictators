@@ -11,6 +11,7 @@ namespace RestAPIForDictators.Controllers
     public class DictatorController : ControllerBase
     {
         private List<DictatorItem> _dictators = new List<DictatorItem>();
+
         private string _dictatorFile = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\dictators.json";
 
         public DictatorController()
@@ -27,6 +28,7 @@ namespace RestAPIForDictators.Controllers
         [HttpGet]
         public string Get()
         {
+            Console.WriteLine($"Successfully returned all dictators.\n{_dictators.Count}");
             return JsonSerializer.Serialize(_dictators);
         }
 
