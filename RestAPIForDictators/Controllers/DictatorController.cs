@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using RestAPIForDictators.Models;
 using System.Text.Json;
 
@@ -8,6 +9,7 @@ namespace RestAPIForDictators.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class DictatorController : ControllerBase
     {
         private List<DictatorItem> _dictators = new List<DictatorItem>();
