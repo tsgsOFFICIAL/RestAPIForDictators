@@ -94,7 +94,13 @@ namespace RestAPIForDictators.Controllers
         {
             try
             {
-                _dictators.RemoveAt(id);
+                for (int i = 0; i < _dictators.Count; i++)
+                {
+                    if (_dictators[i].id == id)
+                    {
+                        _dictators.RemoveAt(i);
+                    }
+                }
 
                 try
                 {
