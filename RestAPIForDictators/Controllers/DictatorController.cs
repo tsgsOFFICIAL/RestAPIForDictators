@@ -28,7 +28,6 @@ namespace RestAPIForDictators.Controllers
         [HttpGet]
         public string Get()
         {
-            Console.WriteLine($"Successfully returned all dictators.\n{_dictators.Count}");
             return JsonSerializer.Serialize(_dictators);
         }
 
